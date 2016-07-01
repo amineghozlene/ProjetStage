@@ -10,7 +10,7 @@ namespace ProjetStage.Controllers
 {
     public class AccountController : Controller
     {
-        ISession session = NhibernateSession.OpenSession();
+        ISession session = NhibernateSession.OpenSessionElearning();
         // GET: Account
         public ActionResult Index()
         {
