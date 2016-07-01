@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="ProjetStage" namespace="ProjetStage.Models">
+  <class name="User" table="user" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Iduser" column="idUser" type="String">
+
+    </id>
+    <property name="FirstName" column="firstName"
+              type="String"></property>
+    <property name="LastName" column="lastName"
+              type="String"></property>
+    <property name="Age" column="age"
+              type="int"></property>
+    <property name="Email" column="email"
+              type="String"></property>
+    <property name="Adress" column="adress"
+              type="String"></property>
+    <property name="Password" column="password"
+              type="String"></property>
+    <property name="NumTel" column="numTel"
+              type="String"></property>
+    <property name="Role" column="role"
+              type="String"></property>
+    <many-to-one not-null="true" name="University" class="University" column="university_id" />
+  </class>
+
+  <class name="University" table="university" dynamic-update="true">
+    <cache usage="read-write"/>
+    <id name="Id" column="id" type="String">
+    </id>
+    <property name="Name" column="name"
+              type="String"></property>
+    <property name="Adress" column="adress"
+              type="String"></property>
+    <property name="Email" column="email"
+              type="String"></property>
+    <property name="NumTel" column="numTel"
+              type="String"></property>
+    <property name="NumFax" column="numFax"
+              type="String"></property>
+    <property name="WebSite" column="webSite"
+              type="String"></property>
+    <property name="Rib" column="rib"
+              type="int"></property>
+    <bag name='Users' table='user' inverse="true" lazy="true" >
+      <key column='univesity_id'/>
+      <one-to-many class='User'/>
+    </bag>
+  </class>
+</hibernate-mapping>
